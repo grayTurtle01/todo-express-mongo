@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Updating</title>
+    </head>
+    <body>
+        <h1>Update Task</h1>
+
+        <form onsubmit="updateTask(); return false ">
+            <input name="id" type="hidden"  value=<%=task['_id']%> >
+            <input name="content" value="<%=task['content']%>" >
+            
+            <input type="submit" value="Update Task">
+        </form>
+
+        <a href="/">Home</a>
+
+        <script>
+            function updateTask(){
+                id = document.querySelector("input[name=id]").value
+                content = document.querySelector("input[name=content]").value
+                
+                fetch("/tasks", {
+                    method: 'put',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        'id': id,
+                        'content': content
+                    })
+                })
+                .then( res => res.json() )
+                .then( data => {
+                    console.log(data)
+                    location.replace("/")
+                })
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CRUD Express</title>
+    </head>
+    <body>
+        <h1>TODO List [Express-Mongo]</h1>
+
+        <form action="/tasks" method="post">
+            <input name="content">
+            <input type="submit" value="Add Task">
+        </form>
+
+
+        <table border=1px>
+            <thead>
+                <th>content</th>
+                <th>done</th>
+            </thead>
+
+            <tbody>
+                
+                <%for (task of tasks) {%>
+                    <tr>
+                        <td><%= task.content %></td>
+                        <td><%= task.done %></td>
+                        <td><button id=<%= task._id %>
+                                    onclick="deleteTask(this)">
+                             delete
+                             </button>
+                        </td>
+
+                        <td><button id=<%= task._id %>
+                                    onclick="openEditor(this)">
+                             edit
+                             </button>
+                        </td>
+                        
+                    </tr>
+               <%}%>
+               
+            </tbody>
+        </table>
+
+
+        <script src="main.js"></script>
+
+        
+    </body>
+</html>
