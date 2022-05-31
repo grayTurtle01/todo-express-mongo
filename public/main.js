@@ -17,3 +17,12 @@ function openEditor(btn){
     location.replace("/tasks/edit/"+id)
 }
 
+function toggleState(check){
+    id = check.getAttribute('task_id')
+    fetch("/tasks/toggle/" + id)
+    .then( res => res.json())
+    .then( task => {
+        console.log(task)
+        location.reload() 
+    })
+}

@@ -107,6 +107,25 @@ app.put("/tasks", (req, res)=> {
         .catch( err => console.log(err)) 
 })
 
+app.get("/tasks/toggle/:id", (req, res) =>{
+    id = req.params.id
+    
+    query = {'_id': mongo.ObjectId(id)}
+    new_values = [
+        // {$set: { done: {$not: "$done"} } }
+        {$set: { done: {$eq:[false, "$done"]} } }
+        
+    ]
+
+    db.collection('tasks').findOneAndUpdate( query, new_values)
+    .then( x => {
+        task = x.value
+        res.json( task )
+    })
+    .catch( err => console.log(err))
+
+})
+
 
 PORT = process.env.PORT || 8000
 app.listen(PORT, ()=> console.log(" ==> Server Listen on port: " + PORT))
