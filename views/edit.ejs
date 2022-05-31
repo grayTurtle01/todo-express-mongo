@@ -2,12 +2,13 @@
     <head>
         <meta charset="utf-8">
         <title>Updating</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <h1>Update Task</h1>
 
         <form onsubmit="updateTask(); return false ">
-            <input name="id" type="hidden"  value=<%=task['_id']%> >
+            <input name="id" type="hidden"  value="<%=task['_id']%>" autofocus>
             <input name="content" value="<%=task['content']%>" >
             
             <input type="submit" value="Update Task">

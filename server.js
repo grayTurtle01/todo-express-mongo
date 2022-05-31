@@ -39,7 +39,7 @@ app.post("/tasks", (req, res) => {
 
     db.collection('tasks').insertOne( new_task )
         .then( x => {
-            console.log(x)
+            // console.log(x)
             res.redirect('/')
      })
     
