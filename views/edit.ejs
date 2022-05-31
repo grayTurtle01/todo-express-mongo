@@ -2,14 +2,14 @@
     <head>
         <meta charset="utf-8">
         <title>Updating</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <h1>Update Task</h1>
+        <h2>Update Task</h2>
 
         <form onsubmit="updateTask(); return false ">
-            <input name="id" type="hidden"  value="<%=task['_id']%>" autofocus>
-            <input name="content" value="<%=task['content']%>" >
+            <input name="id" type="hidden"  value="<%=task['_id']%>">
+            <input name="content" value="<%=task['content']%>" autofocus>
             
             <input type="submit" value="Update Task">
         </form>
@@ -35,6 +35,10 @@
                     location.replace("/")
                 })
             }
+
+            document.querySelector('input[name=content]').focus()    
+
+
         </script>
 
     </body>
