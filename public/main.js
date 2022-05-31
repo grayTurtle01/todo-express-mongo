@@ -22,7 +22,22 @@ function toggleState(check){
     fetch("/tasks/toggle/" + id)
     .then( res => res.json())
     .then( task => {
-        console.log(task)
+        console.log(task)    
         location.reload() 
     })
 }
+
+function updateStates(){
+    checks = document.querySelectorAll('input[type=checkbox]')
+
+    for( check of checks ){
+        state = check.getAttribute('state')
+        if( state == 'true')
+            check.checked = true
+        else
+            check.checked = false    
+    }
+
+}
+
+updateStates()
