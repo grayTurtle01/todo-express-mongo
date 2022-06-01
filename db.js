@@ -10,7 +10,7 @@ db = {}
 MongoClient.connect(uri, {useUnifiedTopology:true})
 MongoClient.connect(uri,)
 .then( client => {
-    console.log(" ==> connect to MongoDB")
+    console.log(" ==> connect to MongoDB by MongoClient")
     db = client.db('miDB')
 })
 
@@ -19,3 +19,21 @@ MongoClient.connect(uri,)
     //~ .then( data => {
         //~ console.log(data)
      //~ })
+
+
+/*** Mongoose ***/
+mongoose = require('mongoose')
+
+mongoose.connect(uri)
+.then( db => console.log(' ==> db connected by mongoose'))
+.catch(err => console.log(err))
+
+var taskSchema = mongoose.Schema({
+    content: String,
+    done: Boolean 
+})
+
+Modelo = mongoose.model('tasks', taskSchema)
+
+
+

@@ -16,6 +16,8 @@ app.use(express.static('public'))
 
 /*** Routes ***/
 app.get("/", (req,res) => {
+    
+
     db.collection('tasks').find().toArray()
     .then( data => {
         res.render('index.ejs', {tasks: data})
@@ -98,20 +100,12 @@ app.put("/tasks", (req, res)=> {
 app.get("/tasks/toggle/:id", (req, res) =>{
     id = req.params.id
     
-    query = {'_id': mongo.ObjectId(id)}
-    new_values = [
-        // {$set: { done: {$not: "$done"} } }
-        {$set: { done: {$eq:[false, "$done"]} } }
-        
-    ]
-
-    db.collection('tasks').findOneAndUpdate( query, new_values)
-    .then( x => {
-        task = x.value
+    Modelo.findById(id, (err, task) => {
+        task.done = !task.done
+        task.save()
         res.json( task )
     })
-    .catch( err => console.log(err))
-
+    
 })
 
 
