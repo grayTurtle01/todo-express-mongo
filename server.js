@@ -100,28 +100,28 @@ app.put("/tasks", (req, res)=> {
 app.get("/tasks/toggle/:id", (req, res) =>{
     id = req.params.id
     
-    Modelo.findById(id, (err, task) => {
-        if(err)
-            res.json({status: err})
-            
-        task.done = !task.done
-        task.save()
-        res.json( task )
-    })
+    // Modelo.findById(id, (err, task) => {
+    //     if(err)
+    //         res.json({status: err})
 
-    // query = {'_id': mongo.ObjectId(id)}
-    // new_values = [
-    //     // {$set: { done: {$not: "$done"} } }
-    //     {$set: { done: {$eq:[false, "$done"]} } }
-        
-    // ]
-
-    // db.collection('tasks').findOneAndUpdate( query, new_values)
-    // .then( x => {
-    //     task = x.value
+    //     task.done = !task.done
+    //     task.save()
     //     res.json( task )
     // })
-    // .catch( err => console.log(err))
+
+    query = {'_id': mongo.ObjectId(id)}
+    new_values = [
+        {$set: { done: {$not: "$done"} } }
+        // {$set: { done: {$eq:[false, "$done"]} } }
+        
+    ]
+
+    db.collection('tasks').findOneAndUpdate( query, new_values)
+    .then( x => {
+        task = x.value
+        res.json( task )
+    })
+    .catch( err => console.log(err))
 
     
 })
