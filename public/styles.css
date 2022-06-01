@@ -13,3 +13,7 @@ h3{
 table{
     margin: auto;
 }
+
+.done{
+    text-decoration: line-through;
+}

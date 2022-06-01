@@ -23,9 +23,10 @@
             <tbody>
                 
                 <%for (task of tasks) {%>
-                    <tr>
-                        <td><%= task.content %></td>
-                        <td><%= task.done %></td>
+                    <tr id="<%= task._id %>" class="row">
+                        <td class="content"><%= task.content %></td>
+                        
+                        <td class="state"><%= task.done %></td>
                         <td><button id=<%= task._id %>
                                     onclick="deleteTask(this)">
                              delete

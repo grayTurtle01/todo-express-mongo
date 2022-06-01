@@ -23,12 +23,12 @@ app.get("/", (req,res) => {
     
 })
 
-//~ app.get("/tasks", (req,res) => {
-    //~ db.collection('tasks').find().toArray()
-    //~ .then( data => {
-        //~ res.json(data)
-    //~ })
-//~ })
+ app.get("/tasks", (req,res) => {
+     db.collection('tasks').find().toArray()
+     .then( data => {
+         res.json(data)
+     })
+ })
 
 app.post("/tasks", (req, res) => {
     
@@ -73,20 +73,6 @@ app.get("/tasks/edit/:id", (req,res) => {
 })
 
 
-//~ app.put("/tasks", (req, res)=> {
-    //~ id = req.body.id
-    //~ content = req.body.content
-
-    //~ query = { '_id': mongo.ObjectId(id) }
-    //~ new_values = { $set: {'content': content }}
-
-    //~ db.collection('tasks').updateOne(query, new_values)
-        //~ .then(x => {
-            //~ res.json({status: 'Task Updated'})
-        //~ })
-        //~ .catch( err => console.log(err)) 
-//~ })
-
 
 app.put("/tasks", (req, res)=> {
     id = req.body.id
@@ -107,6 +93,8 @@ app.put("/tasks", (req, res)=> {
         .catch( err => console.log(err)) 
 })
 
+
+// Flip State
 app.get("/tasks/toggle/:id", (req, res) =>{
     id = req.params.id
     
