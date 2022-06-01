@@ -23,14 +23,13 @@ function toggleState(check){
     .then( res => res.json())
     .then( task => {
         console.log(task)    
-        // location.reload()
-
+        
         row = document.querySelector(`#${id}`)
         content = row.querySelector('.content')
-
+        
         content.classList.toggle('done')
-
-        //updateStates() 
+        
+        location.reload()
     })
 }
 
@@ -45,19 +44,19 @@ function updateStates(){
             check.checked = false    
     }
 
-    rows = document.querySelectorAll('row')
-    console.log(rows)
+    // rows = document.querySelectorAll('row')
+    // console.log(rows)
 
-    for( row of rows ){
-        content = row.querySelector('.content')
-        state = row.querySelector('.state')
+    // for( row of rows ){
+    //     content = row.querySelector('.content')
+    //     state = row.querySelector('.state')
 
-        console.log(state.innerText)
+    //     // console.log(state.innerText)
 
-        if( state.innerText == 'true')
-            content.classList.add('done')    
+    //     if( state.innerText == 'true')
+    //         content.classList.add('done')    
 
-    }
+    // }
 
 }
 
