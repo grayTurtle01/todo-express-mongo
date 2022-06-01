@@ -39,26 +39,18 @@ function toggleState(check){
 }
 
 function setInitialStates(){
-    checks = document.querySelectorAll('input[type=checkbox]')
-
-    for( check of checks ){
-        state = check.getAttribute('state')
-        if( state == 'true')
-            check.checked = true
-        else
-            check.checked = false    
-    }
-
+    
     rows = document.querySelectorAll('.row')
 
     for( row of rows ){
         content = row.querySelector('.content')
         state = row.querySelector('.state')
+        check = row.querySelector('input[type=checkbox]')
 
 
         if( state.innerText == 'true'){
             content.classList.add('done')    
-
+            check.checked = true
         }    
     }
 
