@@ -24,10 +24,10 @@ function toggleState(check){
     .then( task => {
         console.log(task)    
         
-        row = document.querySelector(`#${id}`)
-        content = row.querySelector('.content')
+        // row = document.querySelector(`#${id}`)
+        // content = row.querySelector('.content')
         
-        content.classList.toggle('done')
+        // content.classList.toggle('done')
         
         location.reload()
     })
