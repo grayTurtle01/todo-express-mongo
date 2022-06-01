@@ -34,7 +34,10 @@ function toggleState(check){
         
         // update done-column
         state = row.querySelector('.state')
-        state.innerText = task.done
+        if( state.innerText == 'true' )
+            state.innerText = 'false'
+        else
+            state.innerText = 'true'
 
         // location.reload()
     })
