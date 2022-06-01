@@ -22,18 +22,18 @@ MongoClient.connect(uri,)
 
 
 /*** Mongoose ***/
-// mongoose = require('mongoose')
+mongoose = require('mongoose')
 
-// mongoose.connect(uri)
-// .then( db => console.log(' ==> db connected by mongoose'))
-// .catch(err => console.log(err))
+mongoose.connect(uri)
+.then( db => console.log(' ==> db connected by mongoose'))
+.catch(err => console.log(err))
 
-// var taskSchema = mongoose.Schema({
-//     content: String,
-//     done: Boolean 
-// })
+var taskSchema = mongoose.Schema({
+    content: String,
+    done: Boolean 
+})
 
-// Modelo = mongoose.model('tasks', taskSchema)
+Modelo = mongoose.model('tasks', taskSchema)
 
 
 
