@@ -19,21 +19,26 @@ function openEditor(btn){
 
 function toggleState(check){
     id = check.getAttribute('task_id')
+
     fetch("/tasks/toggle/" + id)
     .then( res => res.json())
     .then( task => {
-        console.log(task)    
+   
+        row = check.parentNode.parentNode
+
+        // update Content
+        content = row.querySelector('.content')
+        content.classList.toggle('done')
         
-        // row = document.querySelector(`#${id}`)
-        // content = row.querySelector('.content')
-        
-        // content.classList.toggle('done')
-        
-        location.reload()
+        // update done-column
+        state = row.querySelector('.state')
+        state.innerText = task.done
+
+        // location.reload()
     })
 }
 
-function updateStates(){
+function setInitialStates(){
     checks = document.querySelectorAll('input[type=checkbox]')
 
     for( check of checks ){
@@ -44,20 +49,19 @@ function updateStates(){
             check.checked = false    
     }
 
-    // rows = document.querySelectorAll('row')
-    // console.log(rows)
+    rows = document.querySelectorAll('.row')
 
-    // for( row of rows ){
-    //     content = row.querySelector('.content')
-    //     state = row.querySelector('.state')
+    for( row of rows ){
+        content = row.querySelector('.content')
+        state = row.querySelector('.state')
 
-    //     // console.log(state.innerText)
 
-    //     if( state.innerText == 'true')
-    //         content.classList.add('done')    
+        if( state.innerText == 'true'){
+            content.classList.add('done')    
 
-    // }
+        }    
+    }
 
 }
 
-updateStates()
+setInitialStates()

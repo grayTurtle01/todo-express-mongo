@@ -23,7 +23,7 @@
             <tbody>
                 
                 <%for (task of tasks) {%>
-                    <tr id="<%= task._id %>" class="row">
+                    <tr task_id="<%= task._id %>" class="row">
                         <td class="content"><%= task.content %></td>
                         
                         <td class="state"><%= task.done %></td>
