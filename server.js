@@ -101,6 +101,9 @@ app.get("/tasks/toggle/:id", (req, res) =>{
     id = req.params.id
     
     Modelo.findById(id, (err, task) => {
+        if(err)
+            res.json({status: err})
+            
         task.done = !task.done
         task.save()
         res.json( task )
