@@ -24,6 +24,8 @@ function toggleState(check){
     .then( res => res.json())
     .then( task => {
    
+        console.log(task)
+
         row = check.parentNode.parentNode
 
         // update Content
