@@ -24,3 +24,9 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - EJS
 - MongoDB
 - Mongo-Atlas
+
+## Features
+- Create New Task
+- Show all Tasks
+- Update Task
+- Delete Task
