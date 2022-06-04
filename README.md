@@ -1,5 +1,5 @@
 ## Description 📖
-Todo List [Express-Mongo]
+A Todo List Web App
 
 ## ScreenShot 📸
 <!-- ![](images/ss02.png) -->
