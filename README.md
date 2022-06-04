@@ -6,3 +6,9 @@ Todo List [Express-Mongo]
 
 ## Demos 🖥️
 [Live Demo](https://todo-express-mongo.herokuapp.com/)  🚀
+
+## API 
+Method|Endpoint|Results
+-|-|-
+GET|/api/tasks/|[{...},{...}, ...,{...}]
+
