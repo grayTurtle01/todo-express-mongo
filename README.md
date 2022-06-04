@@ -27,7 +27,7 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 
 ## Features:
 - Create New Task
-- Show all Tasks
+- Read all Tasks
 - Update Task
 - Delete Task
 - Flip Task State
