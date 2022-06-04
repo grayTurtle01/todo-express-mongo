@@ -25,8 +25,9 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - MongoDB
 - Mongo-Atlas
 
-## Features
+## Features:
 - Create New Task
 - Show all Tasks
 - Update Task
 - Delete Task
+- Flip Task State
