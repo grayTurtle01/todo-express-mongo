@@ -2,7 +2,9 @@
 Todo List [Express-Mongo]
 
 ## ScreenShot 📸
-![](images/ss02.png)
+<!-- ![](images/ss02.png) -->
+![](images/ss03.png)
+
 
 ## Demos 🖥️
 [Live Demo](https://todo-express-mongo.herokuapp.com/)  🚀
