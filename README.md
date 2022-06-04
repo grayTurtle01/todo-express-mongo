@@ -11,4 +11,5 @@ Todo List [Express-Mongo]
 Method|Endpoint|Results
 -|-|-
 GET|/api/tasks/|[{...},{...}, ...,{...}]
+GET|/api/task/:id| {...}
 
