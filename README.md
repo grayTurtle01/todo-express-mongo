@@ -21,5 +21,6 @@ PUUT|/api/tasks/:id| {status: 'tasks updated'}
 ## Tools 🧰
 
 - Express
-- Mongo
-- ejs
+- EJS
+- MongoDB
+- Mongo-Atlas
