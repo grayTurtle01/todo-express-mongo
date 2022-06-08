@@ -24,6 +24,7 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - EJS
 - MongoDB
 - Mongo-Atlas
+- Mongoose
 
 ## Features:
 - Create New Task
