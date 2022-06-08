@@ -27,7 +27,7 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - Mongoose
 - ESLinter
 
-## Features:
+## Features: 📑
 - Create New Task
 - Read all Tasks
 - Update Task
