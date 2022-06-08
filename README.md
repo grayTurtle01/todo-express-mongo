@@ -25,6 +25,7 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - MongoDB
 - Mongo-Atlas
 - Mongoose
+- ESLinter
 
 ## Features:
 - Create New Task
