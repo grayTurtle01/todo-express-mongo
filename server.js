@@ -1,8 +1,8 @@
-express = require('express')
-bodyParser = require('body-parser')
+const express = require('express')
+const bodyParser = require('body-parser')
 
 
-app = express()
+const app = express()
 
 /*** Config ***/
 app.set('view engine', 'ejs')
@@ -17,7 +17,7 @@ app.use(express.static('public'))
 const Task = require('./models/task')
 
 /*** Routes ***/
-app.get("/", (req,res) => {
+app.get('/', (req,res) => {
     
 
     Task.find({})
@@ -28,44 +28,45 @@ app.get("/", (req,res) => {
     
 })
 
- app.get("/tasks", (req,res) => {
-     Task.find({})
-     .then( data => {
-         res.json(data)
-     })
- })
+app.get('/tasks', (req,res) => {
+    Task.find({})
+        .then( data => {
+            res.json(data)
+        })
+})
 
-app.post("/tasks", (req, res) => {
+app.post('/tasks', (req, res) => {
     
-    new_task = {
+    let new_task = {
         content: req.body.content,
         done: false
     }
 
     Task.create( new_task )
         .then( x => {
+            console.log(x)
             res.redirect('/')
         })
     
 })
 
-app.delete("/tasks", (req, res) =>{
-    id = req.body.id
+app.delete('/tasks', (req, res) =>{
+    let id = req.body.id
 
     Task.deleteOne( {'_id': id })
         .then( x => {
-        if( x.deletedCount == 0){
+            if( x.deletedCount == 0){
                 res.json({status: 'task not found'})
             }
-        else{
+            else{
                 res.json({status: 'task deleted'})
             }
-                
+                    
         })
     
 })
 
-app.get("/tasks/edit/:id", (req,res) => {
+app.get('/tasks/edit/:id', (req,res) => {
 
     
     Task.findById( req.params.id )
@@ -76,9 +77,9 @@ app.get("/tasks/edit/:id", (req,res) => {
 })
 
 
-app.put("/tasks", (req, res)=> {
-    id = req.body.id
-    content = req.body.content
+app.put('/tasks', (req, res)=> {
+    const id = req.body.id
+    const content = req.body.content
 
   
     Task.findById(id)
@@ -93,8 +94,8 @@ app.put("/tasks", (req, res)=> {
 
 
 // Flip State
-app.get("/tasks/toggle/:id", (req, res) =>{
-    id = req.params.id
+app.get('/tasks/toggle/:id', (req, res) =>{
+    let id = req.params.id
     
     Task.findById(id, (err, task) => {
         if(err)
@@ -108,5 +109,5 @@ app.get("/tasks/toggle/:id", (req, res) =>{
 })
 
 
-PORT = process.env.PORT || 8000
-app.listen(PORT, ()=> console.log(" ==> Server Listen on port: " + PORT))
+const PORT = process.env.PORT || 8000
+app.listen(PORT, ()=> console.log(' ==> Server Listen on port: ' + PORT))
