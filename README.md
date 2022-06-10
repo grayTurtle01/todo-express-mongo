@@ -17,6 +17,7 @@ GET|/api/task/:id| {...}
 DELETE|/api/tasks/:id| {status: 'task deleted'}
 POST|/api/tasks| {status: 'task added'}
 PUT|/api/tasks/:id| {status: 'tasks updated'}
+PUT|/api/tasks/addLike| {status: 'like added}
 
 ## Tools 🧰
 
