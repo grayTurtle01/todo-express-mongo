@@ -18,6 +18,8 @@
             <thead>
                 <th>content</th>
                 <th>done</th>
+                <th>likes</th>
+
             </thead>
 
             <tbody>
@@ -27,6 +29,11 @@
                         <td class="content"><%= task.content %></td>
                         
                         <td class="state"><%= task.done %></td>
+
+                        <td>
+                            <%= task.likes %>
+                        </td>
+
                         <td><button id=<%= task._id %>
                                     onclick="deleteTask(this)">
                              delete
@@ -38,12 +45,23 @@
                              edit
                              </button>
                         </td>
-                        
+                       
+                        <td>
+                            <button task_id="<%= task._id %>"
+                               onclick="addLike(this)" >
+                               like
+                            </button>
+                        </td>     
+ 
                        <td>
                            <input type="checkbox" task_id="<%= task._id %>"
                                   state="<%=task.done%>"
                                   onclick="toggleState(this)" >
                        </td>     
+
+                       
+                     
+
 
                     </tr>
                <%}%>

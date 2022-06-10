@@ -39,7 +39,9 @@ app.post('/tasks', (req, res) => {
     
     let new_task = {
         content: req.body.content,
-        done: false
+        done: false,
+        likes: 0
+        
     }
 
     Task.create( new_task )
@@ -106,6 +108,18 @@ app.get('/tasks/toggle/:id', (req, res) =>{
         res.json( task )
     })
     
+})
+
+// Add Like
+app.put('/tasks/addLike', (req, res) => {
+
+    Task.findById(req.body.id)
+    .then( task => {
+        task.likes = task.likes + 1
+        task.save()
+        res.json(task)
+    })
+    .catch( err => res.json({error: err}))
 })
 
 

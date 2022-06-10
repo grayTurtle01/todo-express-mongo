@@ -61,4 +61,24 @@ function setInitialStates(){
 
 }
 
+function addLike(btn){
+    id = btn.getAttribute('task_id')
+    
+    fetch('/tasks/addLike', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body : JSON.stringify({
+            id : id
+        })
+
+    })
+    .then( res => res.json() )
+    .then( data => {
+        console.log(data)
+        location.reload()
+    })
+
+}
+
+
 setInitialStates()
