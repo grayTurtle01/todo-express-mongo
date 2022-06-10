@@ -20,7 +20,7 @@ const Task = require('./models/task')
 app.get('/', (req,res) => {
     
 
-    Task.find({})
+    Task.find({}).sort({likes: -1})
         .then( array => {
             res.render('index.ejs', {tasks: array})
         })
