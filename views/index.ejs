@@ -14,38 +14,41 @@
         </form>
 
 
-        <table border=1px>
-            <thead>
-                <th>content</th>
-                <th>done</th>
-                <th>likes</th>
+        <% if( tasks.length > 0 ) { %>
 
-            </thead>
-
-            <tbody>
+            
+            <table border=1px>
+                <thead>
+                    <th>content</th>
+                    <th>done</th>
+                    <th>likes</th>
+                    
+                </thead>
                 
-                <%for (task of tasks) {%>
-                    <tr task_id="<%= task._id %>" class="row">
-                        <td class="content"><%= task.content %></td>
+                <tbody>
+                    
+                    <%for (task of tasks) {%>
+                        <tr task_id="<%= task._id %>" class="row">
+                            <td class="content"><%= task.content %></td>
+                            
+                            <td class="state"><%= task.done %></td>
+                            
+                            <td>
+                                <%= task.likes %>
+                            </td>
+                            
+                            <td><button id=<%= task._id %>
+                                onclick="deleteTask(this)">
+                                delete
+                            </button>
+                        </td>
                         
-                        <td class="state"><%= task.done %></td>
-
-                        <td>
-                            <%= task.likes %>
-                        </td>
-
-                        <td><button id=<%= task._id %>
-                                    onclick="deleteTask(this)">
-                             delete
-                             </button>
-                        </td>
-
                         <td><button id=<%= task._id %>
                                     onclick="openEditor(this)">
                              edit
-                             </button>
+                            </button>
                         </td>
-                       
+                        
                         <td>
                             <button task_id="<%= task._id %>"
                                onclick="addLike(this)" >
@@ -53,7 +56,7 @@
                             </button>
                         </td>     
  
-                       <td>
+                        <td>
                            <input type="checkbox" task_id="<%= task._id %>"
                                   state="<%=task.done%>"
                                   onclick="toggleState(this)" >
@@ -67,7 +70,10 @@
                <%}%>
                
             </tbody>
-        </table>
+            </table>
+        <%} else {%>
+            <h3> Ops!! Not Task Yet. Add The First Task </h3>
+        <% } %>
 
 
         <script src="main.js"></script>
