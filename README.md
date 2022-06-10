@@ -33,3 +33,5 @@ PUT|/api/tasks/:id| {status: 'tasks updated'}
 - Update Task
 - Delete Task
 - Flip Task State
+- Add Like
+- Sort by Likes
