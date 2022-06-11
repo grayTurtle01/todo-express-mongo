@@ -55,19 +55,32 @@ app.post('/tasks', (req, res) => {
     
 })
 
-app.delete('/tasks', (req, res) =>{
+app.delete('/tasks', async (req, res) =>{
     let id = req.body.id
 
-    Task.deleteOne( {'_id': id })
-        .then( x => {
-            if( x.deletedCount == 0){
-                res.json({status: 'task not found'})
-            }
-            else{
+
+    let task = await Task.findByIdAndRemove( id )
+        
+        if( !task ){
+            res.json({status: 'task not found'})
+        }
+        else{
+
+            let tasks = await Task.find({position: {$gt: task.position}})
+        
+                console.log(tasks)
+
+                for( t of tasks){
+                    t.position = t.positon - 1
+                    console.log(t.position)
+                }
+
                 res.json({status: 'task deleted'})
-            }
-                    
-        })
+    
+
+        }
+                
+    
     
 })
 
@@ -145,6 +158,7 @@ app.get('/tasks/upRow/:id', (req, res) => {
 
                         res.json({status: 'rows exchanged'})    
                     } )
+                    .catch( err => console.log(err))
             }
         })
 
