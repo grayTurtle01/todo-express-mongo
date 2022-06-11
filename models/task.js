@@ -12,7 +12,8 @@ mongoose.connect(uri)
 var taskSchema = mongoose.Schema({
     content: String,
     done: Boolean,
-    likes: Number 
+    likes: Number,
+    position: Number 
 })
 
 const Task = mongoose.model('tasks', taskSchema)

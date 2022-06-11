@@ -17,11 +17,13 @@ app.use(express.static('public'))
 const Task = require('./models/task')
 
 /*** Routes ***/
+let rows = 0;
 app.get('/', (req,res) => {
     
 
-    Task.find({}).sort({likes: -1})
+    Task.find({}).sort({position: 1})
         .then( array => {
+            rows = array.length
             res.render('index.ejs', {tasks: array})
         })
         .catch( err => res.json({error: err}))
@@ -40,7 +42,8 @@ app.post('/tasks', (req, res) => {
     let new_task = {
         content: req.body.content,
         done: false,
-        likes: 0
+        likes: 0,
+        position : rows
         
     }
 
@@ -120,6 +123,31 @@ app.put('/tasks/addLike', (req, res) => {
         res.json(task)
     })
     .catch( err => res.json({error: err}))
+})
+
+// UpRow
+app.get('/tasks/upRow/:id', (req, res) => {
+    
+    Task.findById(req.params.id)
+        .then( task => {
+            if( task.position == 0){
+                res.json({status: 'the row is on the top'})
+            }
+            else{
+                Task.findOne({position : task.position - 1 })
+                    .then( upperTask => {
+                        let tmp = task.position
+                        task.position = upperTask.position
+                        upperTask.position = tmp
+
+                        task.save()
+                        upperTask.save()    
+
+                        res.json({status: 'rows exchanged'})    
+                    } )
+            }
+        })
+
 })
 
 

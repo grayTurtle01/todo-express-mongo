@@ -80,5 +80,20 @@ function addLike(btn){
 
 }
 
+function upRow(btn){
+    let row = btn.parentNode.parentNode
+    let id = row.getAttribute('task_id')
+
+    fetch('/tasks/upRow/' + id)
+    // fetch('/tasks/upRow/')
+        .then( res => res.json() )
+        .then( data => {
+            console.log(data)
+            location.reload(true)
+        })
+        .catch( err => console.log(err))
+
+}
+
 
 setInitialStates()

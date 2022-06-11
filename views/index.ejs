@@ -15,8 +15,6 @@
 
 
         <% if( tasks.length > 0 ) { %>
-
-            
             <table border=1px>
                 <thead>
                     <th>content</th>
@@ -57,12 +55,18 @@
                         </td>     
  
                         <td>
+                             <button onclick="upRow(this)" >
+                                up
+                             </button>
+                         </td>     
+
+                        <td>
                            <input type="checkbox" task_id="<%= task._id %>"
                                   state="<%=task.done%>"
                                   onclick="toggleState(this)" >
-                       </td>     
+                        </td>     
 
-                       
+
                      
 
 
@@ -71,6 +75,7 @@
                
             </tbody>
             </table>
+
         <%} else {%>
             <h3> Ops!! Not Task Yet. Add The First Task </h3>
         <% } %>
