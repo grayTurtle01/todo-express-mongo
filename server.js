@@ -150,6 +150,27 @@ app.get('/tasks/upRow/:id', (req, res) => {
 
 })
 
+app.get('/tasks/downRow/:id', async (req, res) => {
+
+    let task  = await Task.findById(req.params.id)
+
+    if( task.position == (rows-1)  ){
+        res.json({status: 'the last row'})
+    }
+    else{
+        let lowerTask = await Task.findOne({position: task.position + 1})
+
+        let tmp = task.position
+        task.position = lowerTask.position
+        lowerTask.position = tmp
+
+        task.save()
+        lowerTask.save()
+
+        res.json({status: 'rows exchanged'})
+    }
+})
+
 
 const PORT = process.env.PORT || 8000
 app.listen(PORT, ()=> console.log(' ==> Server Listen on port: ' + PORT))
