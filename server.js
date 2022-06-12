@@ -66,22 +66,23 @@ app.delete('/tasks', async (req, res) =>{
         }
         else{
 
-            let tasks = await Task.find({position: {$gt: task.position}})
+            await Task.updateMany({position: {$gt: task.position}}, {$inc: {position: -1}} )
         
-                console.log(tasks)
-
-                for( t of tasks){
-                    t.position = t.positon - 1
-                    console.log(t.position)
-                }
-
-                res.json({status: 'task deleted'})
+                
+            res.json({status: 'task deleted'})
     
 
         }
                 
     
     
+})
+
+app.get('/foo', async (req,res) => {
+    await Task.updateMany({}, {$inc: {likes: -1}} )
+   
+
+    res.json({status: 'foo working'})
 })
 
 app.get('/tasks/edit/:id', (req,res) => {
