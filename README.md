@@ -32,7 +32,7 @@ PUT|/api/tasks/addLike| {status: 'like added}
 - Create New Task
 - Read all Tasks
 - Update Task
-- Delete Task
+- ~Delete Task~
 - Flip Task State
 - Add Like
 - Sort by Likes
