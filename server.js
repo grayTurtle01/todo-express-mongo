@@ -37,6 +37,12 @@ app.get('/tasks', (req,res) => {
         })
 })
 
+app.get('/tasks/:id', (req, res) => {
+    Task.findById(req.params.id)
+        .then( task => res.json(task) )
+        .catch(err => res.json({error: err}))
+})
+
 app.post('/tasks', (req, res) => {
     
     let new_task = {
@@ -58,7 +64,6 @@ app.post('/tasks', (req, res) => {
 app.delete('/tasks', async (req, res) =>{
     let id = req.body.id
 
-
     let task = await Task.findByIdAndRemove( id )
         
         if( !task ){
@@ -68,14 +73,8 @@ app.delete('/tasks', async (req, res) =>{
 
             await Task.updateMany({position: {$gt: task.position}}, {$inc: {position: -1}} )
         
-                
             res.json({status: 'task deleted'})
-    
-
-        }
-                
-    
-    
+        }   
 })
 
 app.get('/foo', async (req,res) => {
