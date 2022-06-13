@@ -12,12 +12,12 @@ A Todo List Web App
 ## API 
 Method|Endpoint|Results
 -|-|-
-GET|/api/tasks/|[{...},{...}, ...,{...}]
-GET|/api/task/:id| {...}
-DELETE|/api/tasks/:id| {status: 'task deleted'}
-POST|/api/tasks| {status: 'task added'}
-PUT|/api/tasks/:id| {status: 'tasks updated'}
-PUT|/api/tasks/addLike| {status: 'like added}
+GET|/tasks/|[{...},{...}, ...,{...}]
+GET|/task/:id| {...}
+DELETE|/tasks/:id| {status: 'task deleted'}
+POST|/tasks| {status: 'task added'}
+PUT|/tasks/:id| {status: 'tasks updated'}
+PUT|/tasks/addLike| {status: 'like added}
 
 ## Tools 🧰
 
@@ -32,7 +32,10 @@ PUT|/api/tasks/addLike| {status: 'like added}
 - Create New Task
 - Read all Tasks
 - Update Task
-- ~Delete Task~
+- Delete Task
 - Flip Task State
 - Add Like
-- Sort by Likes
+- ~Sort by Likes~
+- Up Row
+- Down Row
+- Sort by Position
