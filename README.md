@@ -36,6 +36,6 @@ PUT|/tasks/addLike| {status: 'like added}
 - Flip Task State
 - Add Like
 - ~Sort by Likes~
+- Sort by Position
 - Up Row
 - Down Row
-- Sort by Position
