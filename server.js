@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 /*** routers ****/
-let rows = 0;
+let rows = 0
 app.use('/', require('./routes/tasks'))
 
 

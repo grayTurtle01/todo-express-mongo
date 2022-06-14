@@ -43,7 +43,7 @@ router.post('/tasks', (req, res) => {
 
     Task.create( new_task )
         .then( task => {
-            // console.log(task)
+            console.log(task)
             res.redirect('/')
         })
     
@@ -54,15 +54,15 @@ router.delete('/tasks', async (req, res) =>{
 
     let task = await Task.findByIdAndRemove( id )
         
-        if( !task ){
-            res.json({status: 'task not found'})
-        }
-        else{
+    if( !task ){
+        res.json({status: 'task not found'})
+    }
+    else{
 
-            await Task.updateMany({position: {$gt: task.position}}, {$inc: {position: -1}} )
-        
-            res.json({status: 'task deleted'})
-        }   
+        await Task.updateMany({position: {$gt: task.position}}, {$inc: {position: -1}} )
+    
+        res.json({status: 'task deleted'})
+    }   
 })
 
 router.get('/foo', async (req,res) => {
@@ -118,12 +118,12 @@ router.get('/tasks/toggle/:id', (req, res) =>{
 router.put('/tasks/addLike', (req, res) => {
 
     Task.findById(req.body.id)
-    .then( task => {
-        task.likes = task.likes + 1
-        task.save()
-        res.json(task)
-    })
-    .catch( err => res.json({error: err}))
+        .then( task => {
+            task.likes = task.likes + 1
+            task.save()
+            res.json(task)
+        })
+        .catch( err => res.json({error: err}))
 })
 
 // UpRow
@@ -175,4 +175,4 @@ router.get('/tasks/downRow/:id', async (req, res) => {
 
 
 
-module.exports = router;
+module.exports = router
