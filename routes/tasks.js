@@ -4,26 +4,13 @@ let router = express.Router()
 /*** Models ****/
 const Task = require('../models/task')
 
+/*** Controller ***/
+let controller = require('../controllers/tasksController')
 
 /*** Routes ***/
-router.get('/', (req,res) => {
-    
+router.get('/', controller.renderTasks )
 
-    Task.find({}).sort({position: 1})
-        .then( array => {
-            rows = array.length
-            res.render('index.ejs', {tasks: array})
-        })
-        .catch( err => res.json({error: err}))
-    
-})
-
-router.get('/tasks', (req,res) => {
-    Task.find({})
-        .then( data => {
-            res.json(data)
-        })
-})
+router.get('/tasks', controller.getAllTasks)
 
 router.get('/tasks/:id', (req, res) => {
     Task.findById(req.params.id)
