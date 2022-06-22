@@ -12,52 +12,13 @@ router.get('/', controller.renderTasks )
 
 router.get('/tasks', controller.getAllTasks)
 
-router.get('/tasks/:id', (req, res) => {
-    Task.findById(req.params.id)
-        .then( task => res.json(task) )
-        .catch(err => res.json({error: err}))
-})
+router.get('/tasks/:id', controller.getTask )
 
-router.post('/tasks', (req, res) => {
-    
-    let new_task = {
-        content: req.body.content,
-        done: false,
-        likes: 0,
-        position : rows
-        
-    }
+router.post('/tasks', controller.addTask)
 
-    Task.create( new_task )
-        .then( task => {
-            console.log(task)
-            res.redirect('/')
-        })
-    
-})
+router.delete('/tasks', controller.deleteTask)
 
-router.delete('/tasks', async (req, res) =>{
-    let id = req.body.id
-
-    let task = await Task.findByIdAndRemove( id )
-        
-    if( !task ){
-        res.json({status: 'task not found'})
-    }
-    else{
-
-        await Task.updateMany({position: {$gt: task.position}}, {$inc: {position: -1}} )
-    
-        res.json({status: 'task deleted'})
-    }   
-})
-
-router.get('/foo', async (req,res) => {
-    await Task.updateMany({}, {$inc: {likes: -1}} )
-   
-
-    res.json({status: 'foo working'})
-})
+router.get('/reset', controller.resetLikes)
 
 router.get('/tasks/edit/:id', (req,res) => {
 
