@@ -27,6 +27,7 @@ PUT|/tasks/addLike| {status: 'like added}
 - Mongo-Atlas
 - Mongoose
 - ESLinter
+- MVC
 
 ## Features: 📑
 - Create New Task
@@ -39,3 +40,4 @@ PUT|/tasks/addLike| {status: 'like added}
 - Sort by Position
 - Up Row
 - Down Row
+- Reset Likes
