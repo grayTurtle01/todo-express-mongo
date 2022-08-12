@@ -18,6 +18,7 @@ DELETE|/tasks/:id| {status: 'task deleted'}
 POST|/tasks| {status: 'task added'}
 PUT|/tasks/:id| {status: 'tasks updated'}
 PUT|/tasks/addLike| {status: 'like added}
+PUT|/tasks/upRow/:id| {status: 'rows exchanged'}
 
 ## Tools 🧰
 
