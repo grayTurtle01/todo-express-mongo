@@ -7,7 +7,7 @@ A Todo List Web App
 
 
 ## Demos 🖥️
-[Live Demo](https://todo-express-mongo.herokuapp.com/)  🚀
+~~[Live Demo](https://todo-express-mongo)  🚀~~
 
 ## API 
 Method|Endpoint|Results
